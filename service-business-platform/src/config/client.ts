@@ -1,20 +1,32 @@
 export const client = {
-    businessName: "Garza Lawn Care",
+  business: {
+    name: "Joe's Lawn Care",
+    tagline: "Reliable lawn care you can trust",
+    phone: "(555) 555-5555",
+    email: "joe@lawncare.com",
+    services: ["Mowing", "Edging", "Seasonal cleanup"],
+    serviceArea: ["Dallas", "Plano"]
+  },
 
-    tagline: "Reliable lawn care for your home!",
+  theme: "lawn",
 
-    phone: "555-555-5555",
+  features: {
+    hero: true,
+    services: true,
+    gallery: true,
+    testimonials: true,
+    contact: true,
+    payments: true
+  },
 
-    email: "info@garzalawncare.com",
+  payments: {
+    stripePaymentLink: "https://buy.stripe.com/xxxx"
+  },
 
-    theme: "lawn",
-
-    features: {
-        payments: true,
-        contactForm: true,
-        gallery: true,
-        testimonials: true
-    },
-
-    stripePaymentLink: "https://buy.stripe.com/test_4gwcNf3gG9eW0k0aEE"
-}
+  navigation: [
+    {label: "Home", href: "/"},
+    {label: "Services", href: "/services"},
+    {label: "Gallery", href: "/gallery"},
+    {label: "Contact", href: "/contact"}
+  ]
+};
