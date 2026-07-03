@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { client } from "@/config/client";
+import Button from "@/components/ui/Button";
 
 export default function Header() {
   const [visible, setVisible] = useState(true);
@@ -17,11 +19,11 @@ export default function Header() {
         return;
       }
 
-      // Mobile behavior
+      // Mobile: hide on scroll down, show on scroll up
       if (currentY > lastScrollY.current && currentY > 100) {
-        setVisible(false); // scrolling down
+        setVisible(false);
       } else {
-        setVisible(true); // scrolling up
+        setVisible(true);
       }
 
       lastScrollY.current = currentY;
@@ -33,25 +35,41 @@ export default function Header() {
 
   return (
     <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        padding: 16,
-        background: "white",
-        transform: visible ? "translateY(0)" : "translateY(-100%)",
-        transition: "transform 0.25s ease",
-        zIndex: 1000
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10 transition-transform duration-200 ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
     >
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <strong>{client.business.name}</strong>
+      <div className="max-w-6xl mx-auto px-6 py-3">
+        <div className="flex items-center justify-between gap-4">
+          <Link href="/" className="font-bold text-lg text-[var(--color-text)]">
+            {client.business.name}
+          </Link>
 
-        <nav>
-          <a href="#services">Services</a>{" "}
-          <a href="#gallery">Gallery</a>{" "}
-          <a href="#contact">Contact</a>
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            {client.navigation.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-[var(--color-primary)]">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {client.features.payments && (
+            <Button href="/pay" className="text-sm px-4 py-2 shrink-0">
+              Pay Your Bill
+            </Button>
+          )}
+        </div>
+
+        <nav className="md:hidden flex items-center gap-4 text-sm font-medium overflow-x-auto pt-2 -mb-1">
+          {client.navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap hover:text-[var(--color-primary)]"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

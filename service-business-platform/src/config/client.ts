@@ -4,7 +4,7 @@ export const client = {
     tagline: "Reliable lawn care you can trust",
     phone: "(555) 555-5555",
     email: "joe@lawncare.com",
-    services: ["Mowing", "Edging", "Seasonal cleanup"],
+    services: ["Mowing", "Edging", "Seasonal cleanup", "Fertilization", "Aeration"],
     serviceArea: ["Dallas", "Plano"]
   },
 
@@ -28,5 +28,12 @@ export const client = {
     {label: "Services", href: "/services"},
     {label: "Gallery", href: "/gallery"},
     {label: "Contact", href: "/contact"}
+  ],
+
+  testimonials: [
+    {
+      name: "John Doe",
+      quote: "Joe and his team did an amazing job with our lawn care needs!"
+    }
   ]
 };

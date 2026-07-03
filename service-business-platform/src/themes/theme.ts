@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { client } from "@/config/client";
 import { lawnTheme } from "@/themes/lawn";
 import { realtorTheme } from "@/themes/realtor";
@@ -14,15 +15,15 @@ export function getTheme() {
   }
 }
 
-export function getThemeVariables() { 
+export function getThemeVariables(): CSSProperties {
   const theme = getTheme();
-  
-    const root = document.documentElement;
-    root.style.setProperty("--primary-color", theme.colors.primary);
-    root.style.setProperty("--secondary-color", theme.colors.secondary);
-    root.style.setProperty("--background-color", theme.colors.background);
-    root.style.setProperty("--text-color", theme.colors.text);
-    root.style.setProperty("--heading-font", theme.fonts.heading);
-    root.style.setProperty("--body-font", theme.fonts.body);
 
+  return {
+    "--primary-color": theme.colors.primary,
+    "--secondary-color": theme.colors.secondary,
+    "--background-color": theme.colors.background,
+    "--text-color": theme.colors.text,
+    "--heading-font": theme.fonts.heading,
+    "--body-font": theme.fonts.body,
+  } as CSSProperties;
 }
