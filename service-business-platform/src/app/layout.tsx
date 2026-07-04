@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SiteLayout from "@/components/SiteLayout";
 import { client } from "@/config/client";
-import { getThemeVariables } from "@/themes/theme";
+import ThemeProvider from "@/themes/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,9 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" style={getThemeVariables()}>
+    <html lang="en">
       <body>
-        <SiteLayout>{children}</SiteLayout>
+        <ThemeProvider>
+          <SiteLayout>{children}</SiteLayout>
+        </ThemeProvider>
       </body>
     </html>
   );

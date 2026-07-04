@@ -1,3 +1,12 @@
+import PageRenderer from "@/components/PageRenderer";
+import { client } from "@/config/client";
+
 export default function ServicesPage() {
-  return <div style={{ padding: 40 }}>Services Page</div>;
+  const page = client.pages.find((entry) => entry.slug === "services");
+
+  if (!page) {
+    return null;
+  }
+
+  return <PageRenderer page={page} />;
 }

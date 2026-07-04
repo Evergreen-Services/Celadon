@@ -1,3 +1,5 @@
+import { stubPages } from "@/stubs/pages";
+
 export const client = {
   business: {
     name: "Joe's Lawn Care",
@@ -22,6 +24,8 @@ export const client = {
   payments: {
     stripePaymentLink: "https://buy.stripe.com/xxxx"
   },
+
+  pages: stubPages,
 
   navigation: [
     {label: "Home", href: "/"},
