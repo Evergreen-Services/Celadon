@@ -11,11 +11,11 @@ export default function Testimonials() {
         {client.testimonials.map((testimonial) => (
           <blockquote
             key={testimonial.name}
-            className="rounded-lg border border-black/10 p-6 bg-white shadow-sm"
+            className="rounded-[var(--radius-card)] border border-[var(--color-border)] p-6 bg-[var(--color-surface)] shadow-[var(--shadow-card)]"
           >
-            <p className="text-sm text-[var(--color-text)]/80">&ldquo;{testimonial.quote}&rdquo;</p>
+            <p className="text-sm text-[var(--color-muted-text)]">&ldquo;{testimonial.quote}&rdquo;</p>
             <footer className="mt-4 text-sm font-semibold text-[var(--color-primary)]">
-              — {testimonial.name}
+              &mdash; {testimonial.name}
             </footer>
           </blockquote>
         ))}

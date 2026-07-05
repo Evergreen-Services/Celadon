@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/config/client";
 import Button from "@/components/ui/Button";
@@ -35,13 +36,21 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10 transition-transform duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-[var(--color-surface)] border-b border-[var(--color-border)] transition-transform duration-200 ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="font-bold text-lg text-[var(--color-text)]">
+          <Link href="/" className="flex items-center gap-2 font-bold text-lg text-[var(--color-text)]">
+            <Image
+              src={client.branding.logo.src}
+              alt={client.branding.logo.alt}
+              width={client.branding.logo.width}
+              height={client.branding.logo.height}
+              className="h-8 w-8 shrink-0 object-contain"
+              priority
+            />
             {client.business.name}
           </Link>
 
@@ -54,7 +63,7 @@ export default function Header() {
           </nav>
 
           {client.features.payments && (
-            <Button href="/pay" className="text-sm px-4 py-2 shrink-0">
+            <Button href="/payments" className="text-sm px-4 py-2 shrink-0" variant="secondary">
               Pay Your Bill
             </Button>
           )}

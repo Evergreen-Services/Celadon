@@ -1,30 +1,12 @@
-export type PageSection = {
-  type: "hero" | "cards" | "list" | "contact";
-  heading?: string;
-  body?: string;
-  items?: Array<{
-    title: string;
-    description?: string;
-    eyebrow?: string;
-  }>;
-  cta?: {
-    label: string;
-    href: string;
-  };
-};
+import type { ClientPage } from "./types";
 
-export type ClientPage = {
-  slug: string;
-  title: string;
-  subtitle?: string;
-  sections?: PageSection[];
-};
-
-export const stubPages: ClientPage[] = [
+export const pages: ClientPage[] = [
+  // Home page is exported separately as `home` below — keep it in pages[] for listings
   {
     slug: "services",
     title: "Services",
-    subtitle: "Simple, reliable support for your home or business, built around the work you need most.",
+    subtitle:
+      "Simple, reliable support for your home or business, built around the work you need most.",
     sections: [
       {
         type: "hero",
@@ -56,7 +38,7 @@ export const stubPages: ClientPage[] = [
       },
       {
         type: "list",
-        heading: "What’s included",
+        heading: "What's included",
         items: [
           { title: "Free estimates for new clients" },
           { title: "Flexible scheduling for busy households" },
@@ -107,7 +89,7 @@ export const stubPages: ClientPage[] = [
     sections: [
       {
         type: "contact",
-        heading: "Let’s talk",
+        heading: "Let's talk",
         body: "These fields are ready to be customized with your preferred contact details, hours, and service area.",
       },
       {
@@ -130,4 +112,49 @@ export const stubPages: ClientPage[] = [
       },
     ],
   },
+  {
+    slug: "payments",
+    title: "Payments",
+    subtitle: "Make a payment for your recent service or schedule a future visit.",
+    sections: [
+      {
+        type: "hero",
+        heading: "Pay online",
+        body: "Use the button below to make a secure payment for your recent service or schedule a future visit.",
+        cta: {
+          label: "Make a payment",
+          href: "https://buy.stripe.com/xxxx",
+        },
+      },
+    ],
+  },
 ];
+
+export default pages;
+
+export const home: ClientPage = {
+  slug: "home",
+  title: "Welcome",
+  subtitle: "Local, reliable service for your home and business",
+  sections: [
+    {
+      type: "hero",
+      heading: "Local service that feels personal",
+      body: "We combine dependable workmanship with clear communication so every visit feels easy and stress-free.",
+      cta: {
+        label: "Get a quote",
+        href: "/contact",
+      },
+    },
+    {
+      type: "cards",
+      heading: "Popular offerings",
+      body: "Quick starter options you can customize for your brand.",
+      items: [
+        { title: "Lawn mowing", description: "Weekly and biweekly mowing with crisp edging." },
+        { title: "Seasonal cleanup", description: "Leaf removal, debris pickup, and property refreshes." },
+        { title: "Fertilization", description: "Treatments to keep grass healthy and resilient." },
+      ],
+    },
+  ],
+};

@@ -11,7 +11,7 @@ export default function Services() {
         {client.business.services.map((service) => (
           <div
             key={service}
-            className="rounded-lg border border-black/10 p-6 bg-white shadow-sm"
+            className="rounded-[var(--radius-card)] border border-[var(--color-border)] p-6 bg-[var(--color-surface)] shadow-[var(--shadow-card)]"
           >
             <h3 className="font-semibold text-lg text-[var(--color-primary)]">{service}</h3>
           </div>

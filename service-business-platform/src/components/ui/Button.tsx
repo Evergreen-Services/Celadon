@@ -8,10 +8,10 @@ type ButtonProps = {
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const base =
-  "inline-flex items-center justify-center rounded-md px-6 py-3 font-medium transition-opacity hover:opacity-90 text-center";
+  "inline-flex items-center justify-center rounded-[var(--radius-button)] px-6 py-3 font-medium transition-opacity hover:opacity-90 text-center";
 
 const variants = {
-  primary: "bg-[var(--color-primary)] text-white",
+  primary: "bg-[var(--color-primary)] text-[var(--color-primary-contrast)]",
   secondary: "border-2 border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent",
 };
 
