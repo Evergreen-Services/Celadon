@@ -1,5 +1,5 @@
 export type PageSection = {
-  type: "hero" | "cards" | "list" | "contact";
+  type: string;
   heading?: string;
   body?: string;
   items?: Array<{
