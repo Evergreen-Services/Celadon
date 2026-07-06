@@ -91,6 +91,10 @@ export const pages: ClientPage[] = [
         type: "contact",
         heading: "Let's talk",
         body: "These fields are ready to be customized with your preferred contact details, hours, and service area.",
+        buttons: [
+          { label: "Email us", href: "mailto:joe@lawncare.com" },
+          { label: "Call now", href: "tel:+15555555555", variant: "secondary" },
+        ],
       },
       {
         type: "cards",

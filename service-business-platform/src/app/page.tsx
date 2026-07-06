@@ -1,4 +1,4 @@
-import PageRenderer from "@/components/PageRenderer";
+import PageRenderer from "@/lib/PageRenderer";
 import { home } from "@/config/pages";
 
 export default function Home() {

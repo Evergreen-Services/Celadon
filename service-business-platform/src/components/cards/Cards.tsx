@@ -1,4 +1,4 @@
-import type { PageSection, ClientPage } from "@/config/types";
+import type { PageSection } from "@/config/types";
 import Button from "@/components/ui/Button";
 
 export default function Cards({ section }: { section?: PageSection }) {
@@ -17,12 +17,21 @@ export default function Cards({ section }: { section?: PageSection }) {
             {item.eyebrow && <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary)]">{item.eyebrow}</p>}
             <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
             {item.description && <p className="mt-2 text-sm text-[var(--color-muted-text)]">{item.description}</p>}
-            {item.title && (
+            {item.href && item.buttonLabel && (
               <div className="mt-4">
-                <Button href="#">Learn more</Button>
+                <Button href={item.href} variant={item.buttonLabel ? "primary" : "secondary"} className="w-full">
+                  {item.buttonLabel}
+                </Button>
               </div>
             )}
           </div>
+        ))}
+      </div>
+      <div className="mt-8 flex flex-wrap gap-4">
+        {section.buttons?.map((button) => (
+          <Button key={button.href} href={button.href} external={button.external} variant={button.variant as any}>
+            {button.label}
+          </Button>
         ))}
       </div>
     </section>

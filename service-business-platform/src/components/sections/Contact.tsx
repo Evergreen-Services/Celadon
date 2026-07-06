@@ -1,4 +1,3 @@
-import { client } from "@/config/client";
 import type { PageSection } from "@/config/types";
 import Button from "@/components/ui/Button";
 
@@ -11,8 +10,11 @@ export default function ContactSection({ section }: { section?: PageSection }) {
         <h2 className="text-2xl md:text-3xl font-bold">{section.heading}</h2>
         {section.body && <p className="mt-3 max-w-2xl text-[var(--color-muted-text)]">{section.body}</p>}
         <div className="mt-8 flex flex-wrap gap-4">
-          <Button href={`mailto:${client.business.email}`}>Email us</Button>
-          <Button href={`tel:${client.business.phone.replace(/[^\d+]/g, "")}`} variant="secondary">Call now</Button>
+          {section.buttons?.map((button) => (
+            <Button key={button.href} href={button.href} external={button.external} variant={button.variant as any}>
+              {button.label}
+            </Button>
+          ))}
         </div>
       </div>
     </section>

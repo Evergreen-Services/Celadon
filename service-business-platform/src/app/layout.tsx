@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/components/SiteLayout";
+import SiteLayout from "@/lib/SiteLayout";
 import { client } from "@/config/client";
 import { getThemeVariables } from "@/lib/theme";
 import "./globals.css";

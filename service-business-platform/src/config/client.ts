@@ -35,6 +35,13 @@ export const testimonials: ClientConfig["testimonials"] = [
   { name: "John Doe", quote: "Joe and his team did an amazing job with our lawn care needs!" },
 ];
 
+export const copy = {
+  exploreLabel: "Explore:",
+  footerContactLabel: "Contact",
+  footerServiceAreaLabel: "Service Area",
+  footerCopyrightNotice: "All rights reserved.",
+};
+
 export const client: ClientConfig = {
   siteUrl,
   business,
@@ -44,6 +51,7 @@ export const client: ClientConfig = {
   pages,
   navigation,
   testimonials,
+  copy,
 };
 
 export { branding as clientBranding, theme as clientTheme, pages as clientPages };

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PageRenderer from "@/components/PageRenderer";
+import PageRenderer from "@/lib/PageRenderer";
 import { getClientPage, getClientPageStaticParams } from "@/lib/client-pages";
 
 type SlugPageProps = {

@@ -1,28 +1,31 @@
+import type { PageSection } from "@/config/types";
 import { client } from "@/config/client";
 import Button from "@/components/ui/Button";
 
-export default function Payments({ compact = false }: { compact?: boolean }) {
+export default function Payments({ section, compact = false }: { section?: PageSection; compact?: boolean }) {
   if (!client.features.payments) return null;
-  const paymentsHref = client.pages.find((p) => p.slug === "payments")?.sections?.[0]?.cta?.href;
-  if (!paymentsHref) return null;
+  if (!section?.cta?.href) return null;
+
   return (
     <section
       className={`px-6 text-center ${compact ? "py-16" : "py-24"} bg-[var(--color-secondary)]`}
     >
-      <h2 className="text-2xl md:text-3xl font-bold">Pay Your Bill Online</h2>
-      <p className="mt-3 text-[var(--color-muted-text)] max-w-md mx-auto">
-        Secure, fast, and easy. Pay with a credit card, debit card, Apple Pay, or Google Pay.
-      </p>
+      {section.heading && <h2 className="text-2xl md:text-3xl font-bold">{section.heading}</h2>}
+      {section.body && (
+        <p className="mt-3 text-[var(--color-muted-text)] max-w-md mx-auto">{section.body}</p>
+      )}
 
       <div className="mt-8">
-        <Button href={paymentsHref} external className="text-lg px-8 py-4">
-          Pay Now
+        <Button href={section.cta.href} external={section.cta.external} className="text-lg px-8 py-4" variant={section.cta.variant as any}>
+          {section.cta.label}
         </Button>
       </div>
 
-      <p className="mt-4 text-xs text-[var(--color-muted-text)]">
-        Payments are processed securely by Stripe. We never see or store your card details.
-      </p>
+      {section.items?.length && (
+        <p className="mt-4 text-xs text-[var(--color-muted-text)]">
+          {section.items[0].description}
+        </p>
+      )}
     </section>
   );
 }

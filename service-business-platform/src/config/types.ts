@@ -6,11 +6,21 @@ export type PageSection = {
     title: string;
     description?: string;
     eyebrow?: string;
+    href?: string;
+    buttonLabel?: string;
   }>;
   cta?: {
     label: string;
     href: string;
+    external?: boolean;
+    variant?: string;
   };
+  buttons?: Array<{
+    label: string;
+    href: string;
+    external?: boolean;
+    variant?: string;
+  }>;
 };
 
 export type ClientPage = {
@@ -89,4 +99,10 @@ export type ClientConfig = {
     name: string;
     quote: string;
   }>;
+  copy?: {
+    exploreLabel?: string;
+    footerContactLabel?: string;
+    footerServiceAreaLabel?: string;
+    footerCopyrightNotice?: string;
+  };
 };

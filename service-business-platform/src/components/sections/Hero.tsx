@@ -1,9 +1,11 @@
+import type { PageSection } from "@/config/types";
 import { client } from "@/config/client";
 import Button from "@/components/ui/Button";
 
-export default function Hero() {
+export default function Hero({ section }: { section?: PageSection }) {
   if (!client.features.hero) return null;
   const heroImage = client.branding.heroImage;
+  const buttons = section?.buttons ?? (section?.cta ? [section.cta] : []);
 
   return (
     <section className="relative overflow-hidden bg-[var(--color-primary)] text-[var(--color-primary-contrast)] px-6 py-20 text-center">
@@ -17,18 +19,21 @@ export default function Hero() {
       )}
 
       <div className="relative max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold">{client.business.name}</h1>
-        <p className="mt-4 text-lg opacity-90 max-w-xl mx-auto">{client.business.tagline}</p>
+        <h1 className="text-4xl md:text-5xl font-bold">{section?.heading ?? client.business.name}</h1>
+        <p className="mt-4 text-lg opacity-90 max-w-xl mx-auto">{section?.body ?? client.business.tagline}</p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <Button href="/contact" variant="secondary" className="!border-[var(--color-primary-contrast)] !text-[var(--color-primary-contrast)]">
-            Request a Quote
-          </Button>
-          {client.features.payments && (
-            <Button href="/payments" className="!bg-[var(--color-primary-contrast)] !text-[var(--color-primary)]">
-              Pay Your Bill
+          {buttons.map((button) => (
+            <Button
+              key={button.href}
+              href={button.href}
+              variant={button.variant as any}
+              external={button.external}
+              className={button.variant === "secondary" ? "!border-[var(--color-primary-contrast)] !text-[var(--color-primary-contrast)]" : "!bg-[var(--color-primary-contrast)] !text-[var(--color-primary)]"}
+            >
+              {button.label}
             </Button>
-          )}
+          ))}
         </div>
       </div>
     </section>

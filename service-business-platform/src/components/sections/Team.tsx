@@ -17,7 +17,7 @@ export default function Team({ section }: { section?: PageSection }) {
         ) : (
           <div className="rounded-[var(--radius-card)] border border-[var(--color-border)] p-6 bg-[var(--color-surface)] shadow-[var(--shadow-card)]">
             <h3 className="font-semibold">{client.business.name}</h3>
-            <p className="mt-2 text-[var(--color-muted-text)]">Owner & Lead Technician</p>
+            <p className="mt-2 text-[var(--color-muted-text)]">{client.business.tagline}</p>
           </div>
         )}
       </div>

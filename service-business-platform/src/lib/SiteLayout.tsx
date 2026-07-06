@@ -1,5 +1,5 @@
-import Header from "./sections/Header";
-import Footer from "./sections/Footer";
+import Header from "../components/navigation/Header";
+import Footer from "../components/navigation/Footer";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (

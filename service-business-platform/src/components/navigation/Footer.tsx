@@ -23,7 +23,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="font-semibold text-sm text-[var(--color-text)]">Contact</p>
+          <p className="font-semibold text-sm text-[var(--color-text)]">{client.copy?.footerContactLabel}</p>
           <p className="text-sm mt-2">
             <a href={`tel:${client.business.phone}`} className="hover:text-[var(--color-primary)]">
               {client.business.phone}
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="font-semibold text-sm text-[var(--color-text)]">Service Area</p>
+          <p className="font-semibold text-sm text-[var(--color-text)]">{client.copy?.footerServiceAreaLabel}</p>
           <p className="text-sm mt-2 text-[var(--color-text)]/80">
             {client.business.serviceArea.join(", ")}
           </p>
@@ -53,7 +53,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-[var(--color-border)] px-6 py-4 text-center text-xs text-[var(--color-muted-text)]">
-        &copy; {year} {client.business.name}. All rights reserved.
+        &copy; {year} {client.business.name}. {client.copy?.footerCopyrightNotice}
       </div>
     </footer>
   );

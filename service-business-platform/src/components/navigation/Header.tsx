@@ -34,6 +34,8 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const paymentsNavItem = client.navigation.find((item) => item.href === "/payments");
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 bg-[var(--color-surface)] border-b border-[var(--color-border)] transition-transform duration-200 ${
@@ -62,9 +64,9 @@ export default function Header() {
             ))}
           </nav>
 
-          {client.features.payments && (
-            <Button href="/payments" className="text-sm px-4 py-2 shrink-0" variant="secondary">
-              Pay Your Bill
+          {client.features.payments && paymentsNavItem && (
+            <Button href={paymentsNavItem.href} className="text-sm px-4 py-2 shrink-0" variant="secondary">
+              {paymentsNavItem.label}
             </Button>
           )}
         </div>
